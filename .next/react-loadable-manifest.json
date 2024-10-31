@@ -1,0 +1,16 @@
+{
+  "app/page.tsx -> ../components/ImageCapture/ImageCapture": {
+    "id": "app/page.tsx -> ../components/ImageCapture/ImageCapture",
+    "files": [
+      "static/css/_app-pages-browser_components_ImageCapture_ImageCapture_tsx.css",
+      "static/chunks/_app-pages-browser_components_ImageCapture_ImageCapture_tsx.js"
+    ]
+  },
+  "app/page.tsx -> ../components/VideoCapture/VideoCapture": {
+    "id": "app/page.tsx -> ../components/VideoCapture/VideoCapture",
+    "files": [
+      "static/css/_app-pages-browser_components_VideoCapture_VideoCapture_tsx.css",
+      "static/chunks/_app-pages-browser_components_VideoCapture_VideoCapture_tsx.js"
+    ]
+  }
+}
