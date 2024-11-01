@@ -27,21 +27,31 @@ function VideoNormalizer() {
     let items: MutableRefObject<Array<any>> = useRef([]);
     let image: MutableRefObject<DSImageData | null> = useRef(null);
     let quads: Array<any> = [];
-
+    let scanRegion:any = {}
     useEffect((): any => {
         const init = async () => {
             try {
                 view.current = await CameraView.createInstance('@engineResourcePath/dce.mobile-native.ui.html');
 
                 dce.current = await (cameraEnhancer.current = CameraEnhancer.createInstance(view.current));
-                let scanRegion = {
-                    x: 25,
-                    y: 25,
-                    width: 50,
-                    height: 50,
-                    isMeasuredInPercentage: true
-                };
-                dce.current.setScanRegion(scanRegion); 
+                
+                dce.current.on("cameraOpen", () => {
+                    let width:any = dce.current?.video.videoWidth
+                    let height: any = dce.current?.video.videoHeight
+                    let sideLen: any = Math.min(height)*0.6
+                    let precentW = Math.round(sideLen/width*100)
+                    let precentH = Math.round(sideLen/height*100);
+                    scanRegion = {
+                        x: 25,
+                        y: 25,
+                        width: precentW,
+                        height: precentH,
+                        isMeasuredInPercentage: true
+                    };
+                    dce.current?.setScanRegion(scanRegion); 
+
+                });
+
                 //...
                 imageEditorView.current = await ImageEditorView.createInstance(imageEditorViewContainerRef.current as HTMLDivElement);
                 /* Creates an image editing layer for drawing found document boundaries. */
