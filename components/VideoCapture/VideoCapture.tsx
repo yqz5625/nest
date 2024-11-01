@@ -42,8 +42,8 @@ function VideoNormalizer() {
                     let precentW = Math.round(sideLen/width*100)
                     let precentH = Math.round(sideLen/height*100);
                     scanRegion = {
-                        x: 25,
-                        y: 25,
+                        x: precentW,
+                        y: precentW,
                         width: precentW,
                         height: precentH,
                         isMeasuredInPercentage: true
